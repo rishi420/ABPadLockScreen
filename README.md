@@ -1,3 +1,5 @@
+To answer this question on Stackoverflow: [Wait for asynchronous request result](http://stackoverflow.com/q/38684648/1378447)
+
 <p align="center" >
   <img src="http://www.aronbury.com/assets/images/ab_logo.png" alt="ABLogo" title="ABLogo">
 </p>
