@@ -72,6 +72,7 @@ class ViewController: UIViewController, ABPadLockScreenSetupViewControllerDelega
     func padLockScreenViewController(padLockScreenViewController: ABPadLockScreenViewController!, validatePin pin: String!) -> Bool {
         print("Validating Pin \(pin)")
         return thePin == pin
+        //return isPinValid
     }
     
     func unlockWasSuccessfulForPadLockScreenViewController(padLockScreenViewController: ABPadLockScreenViewController!) {
@@ -86,6 +87,18 @@ class ViewController: UIViewController, ABPadLockScreenSetupViewControllerDelega
     func unlockWasCancelledForPadLockScreenViewController(padLockScreenViewController: ABPadLockScreenViewController!) {
         print("Unlock Cancled")
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func shouldValidatePinManuallyForPadLockScreenViewController(padLockScreenViewController: ABPadLockScreenViewController!) -> Bool {
+        
+        print("Starting asynchronous task...")
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+            print("Asynchronous task complete")
+            padLockScreenViewController.processUnlock()
+        })
+        
+        return true
     }
 }
 

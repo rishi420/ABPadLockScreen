@@ -45,6 +45,7 @@
 - (void)setLockedOutText:(NSString *)title;
 - (void)setPluralAttemptsLeftText:(NSString *)title;
 - (void)setSingleAttemptLeftText:(NSString *)title;
+- (void)processUnlock;
 
 @end
 
@@ -76,5 +77,11 @@
  Called when the user has expired their attempts
  */
 - (void)attemptsExpiredForPadLockScreenViewController:(ABPadLockScreenViewController *)padLockScreenViewController;
+
+/**
+ Call when pin validation is needed manually
+ Call processUnlock method to validate manually if return true from this value
+ */
+- (BOOL)shouldValidatePinManuallyForPadLockScreenViewController:(ABPadLockScreenViewController *)padLockScreenViewController;
 
 @end

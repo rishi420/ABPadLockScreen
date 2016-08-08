@@ -94,7 +94,7 @@
 
 #pragma mark -
 #pragma mark - Pin Processing
-- (void)processPin
+- (void)processUnlock
 {
     if ([self isPinValid:self.currentPin])
     {
@@ -104,6 +104,19 @@
     {
         [self processFailure];
     }
+}
+
+- (void)processPin
+{
+    if ([self.lockScreenDelegate respondsToSelector:@selector(shouldValidatePinManuallyForPadLockScreenViewController:)])
+    {
+        if ([self.lockScreenDelegate shouldValidatePinManuallyForPadLockScreenViewController:self])
+        {
+            return;
+        }
+    }
+    
+    [self processUnlock];
 }
 
 - (void)unlockScreen
